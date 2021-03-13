@@ -1,0 +1,129 @@
+<resources>
+    <!-- Speed Preference -->
+    <string-array name="speed_entries">
+        <item>Meters per second (m/s)</item>
+        <item>Kilometers per hour (km/h)</item>
+        <item>Miles per hour (mph)</item>
+    </string-array>
+
+    <string-array name="speed_values">
+        <item>m/s</item>
+        <item>km/h</item>
+        <item>mph</item>
+    </string-array>
+
+    <!-- Acceleration Preference -->
+    <string-array name="acceleration_entries">
+        <item>Meters per second squared (m/s²)</item>
+        <item>Meters per second squared (ᵐ⁄ₛ₂)</item>
+        <item>g-force (g)</item>
+    </string-array>
+
+    <string-array name="acceleration_values">
+        <item>m/s²</item>
+        <item>ᵐ⁄ₛ₂</item>
+        <item>g</item>
+    </string-array>
+
+    <!-- Angle Preference -->
+    <string-array name="angle_entries">
+        <item>Radian (ᶜ)</item>
+        <item>Degree (°)</item>
+    </string-array>
+
+    <string-array name="angle_values">
+        <item>ᶜ</item>
+        <item>°</item>
+    </string-array>
+
+    <!-- Altitude Preference -->
+    <string-array name="altitude_entries">
+        <item>Meter (m)</item>
+        <item>Foot (ft)</item>
+    </string-array>
+
+    <string-array name="altitude_values">
+        <item>m</item>
+        <item>ft</item>
+    </string-array>
+
+    <!-- Temperature Preference -->
+    <string-array name="temperature_entries">
+        <item>Kelvin (K)</item>
+        <item>Degree Celsius (°C)</item>
+        <item>Degree Fahrenheit (°F)</item>
+    </string-array>
+
+    <string-array name="temperature_values">
+        <item>K</item>
+        <item>°C</item>
+        <item>°F</item>
+    </string-array>
+
+    <!-- Pressure Preference -->
+    <string-array name="pressure_entries">
+        <item>Pascal (Pa)</item>
+        <item>Bar (bar)</item>
+        <item>Hectopascal (hPa)</item>
+        <item>Millibar (mbar)</item>
+        <item>Pound-force per square inch (psi)</item>
+    </string-array>
+
+    <string-array name="pressure_values">
+        <item>Pa</item>
+        <item>bar</item>
+        <item>hPa</item>
+        <item>mbar</item>
+        <item>psi</item>
+    </string-array>
+
+    <!-- Rate Preference -->
+    <string-array name="rate_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="rate_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <!-- Theme Preference -->
+    <string-array name="theme_entries">
+        <item>System default</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>-1</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+</resources>

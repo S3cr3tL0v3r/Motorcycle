@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="de.henrikkaltenbach.motorcycle.util.StringUtil" />
+        <variable name="telemetry" type="de.henrikkaltenbach.motorcycle.viewmodel.Telemetry" />
+        <variable name="unit" type="de.henrikkaltenbach.motorcycle.viewmodel.Unit" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            tools:context=".ui.main.TelemetryFragment">
+
+        <TextView
+                android:id="@+id/tvLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getSevenDecimal(telemetry.latitude), default=49.505}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+                android:id="@+id/tvLatitudeUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/deg"
+                app:layout_constraintStart_toEndOf="@+id/tvLatitude"
+                app:layout_constraintTop_toTopOf="@+id/tvLatitude" />
+
+        <TextView
+                android:id="@+id/tvLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getSevenDecimal(telemetry.longitude), default=8.505}"
+                app:layout_constraintEnd_toEndOf="@+id/tvLatitude"
+                app:layout_constraintTop_toBottomOf="@+id/tvLatitude" />
+        <TextView
+                android:id="@+id/tvLongitudeUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/deg"
+                app:layout_constraintStart_toEndOf="@+id/tvLongitude"
+                app:layout_constraintTop_toTopOf="@+id/tvLongitude" />
+
+        <ImageView
+                android:id="@+id/ivMinAltitude"
+                android:layout_width="18dp"
+                android:layout_height="0dp"
+                android:alpha="0.5"
+                android:contentDescription="@string/lowest_altitude_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMinAltitude"
+                app:layout_constraintEnd_toStartOf="@+id/tvMinAltitude"
+                app:layout_constraintTop_toTopOf="@+id/tvMinAltitude"
+                app:srcCompat="@drawable/stat_sys_download_anim0" />
+        <TextView
+                android:id="@+id/tvMinAltitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.minAltitude), default=150}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMaxAltitude"
+                app:layout_constraintEnd_toStartOf="@+id/ivMaxAltitude" />
+        <ImageView
+                android:id="@+id/ivMaxAltitude"
+                android:layout_width="18dp"
+                android:layout_height="0dp"
+                android:alpha="0.5"
+                android:contentDescription="@string/highest_altitude_icon"
+                android:rotation="180"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMaxAltitude"
+                app:layout_constraintEnd_toStartOf="@+id/tvMaxAltitude"
+                app:layout_constraintTop_toTopOf="@+id/tvMaxAltitude"
+                app:srcCompat="@drawable/stat_sys_download_anim0" />
+        <TextView
+                android:id="@+id/tvMaxAltitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.maxAltitude), default=940}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAltitude"
+                app:layout_constraintEnd_toStartOf="@+id/tvAltitude" />
+        <TextView
+                android:id="@+id/tvAltitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.altitude), default=150}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvAltitudeUnit"
+                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+                android:id="@+id/tvAltitudeUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.altitude, default=m}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvAltitude" />
+
+        <de.henrikkaltenbach.motorcycle.view.VerticalTextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/max_values"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvMaxSpeed"
+                app:layout_constraintEnd_toEndOf="@+id/tvMaxAcceleration"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLongitude" />
+
+        <TextView
+                android:id="@+id/tvMaxSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:maxLength="3"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.maxSpeed), default=299}"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSpeed"
+                app:layout_constraintStart_toStartOf="parent" />
+        <de.henrikkaltenbach.motorcycle.view.VerticalTextView
+                android:id="@+id/tvMaxSpeedUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="bottom"
+                android:text="@{unit.speed, default=@string/km_h}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvMaxSpeed"
+                app:layout_constraintStart_toEndOf="@+id/tvMaxSpeed"
+                app:layout_constraintTop_toTopOf="@+id/tvMaxSpeed" />
+
+        <TextView
+                android:id="@+id/tvSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.speed), default=299}"
+                android:textSize="144sp"
+                app:layout_constraintEnd_toStartOf="@+id/tvSpeedUnit"
+                app:layout_constraintTop_toBottomOf="@+id/tvLongitude" />
+        <de.henrikkaltenbach.motorcycle.view.VerticalTextView
+                android:id="@+id/tvSpeedUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:gravity="bottom"
+                android:text="@{unit.speed, default=@string/km_h}"
+                android:textSize="48sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSpeed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvSpeed"
+                app:layout_constraintVertical_bias="0.523" />
+
+        <TextView
+                android:id="@+id/tvMaxAcceleration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:text="@{StringUtil.getOneDecimal(telemetry.maxAcceleration), default=1.0}"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAcceleration"
+                app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+                android:id="@+id/tvMaxAccelerationUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.acceleration, default=g}"
+                android:textSize="36sp"
+                app:layout_constraintStart_toEndOf="@+id/tvMaxAcceleration"
+                app:layout_constraintTop_toTopOf="@+id/tvMaxAcceleration" />
+
+        <TextView
+                android:id="@+id/tvAcceleration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:text="@{StringUtil.getOneDecimal(telemetry.acceleration), default=1.0}"
+                android:textSize="144sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvSpeed"
+                app:layout_constraintEnd_toStartOf="@+id/tvAccelerationUnit"/>
+        <TextView
+                android:id="@+id/tvAccelerationUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.acceleration, default=g}"
+                android:textSize="144sp"
+                app:layout_constraintTop_toTopOf="@+id/tvAcceleration" app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tvMaxAngle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.maxAngle), default=45}"
+                android:textSize="36sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAngle"
+                app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+                android:id="@+id/tvMaxAngleUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.angle, default=@string/deg}"
+                android:textSize="36sp"
+                app:layout_constraintStart_toEndOf="@+id/tvMaxAngle"
+                app:layout_constraintTop_toTopOf="@+id/tvMaxAngle" />
+
+        <TextView
+                android:id="@+id/tvAngle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.angle), default=30}"
+                android:textSize="144sp"
+                app:layout_constraintTop_toBottomOf="@+id/tvAcceleration"
+                app:layout_constraintEnd_toStartOf="@+id/tvAngleUnit" />
+        <TextView
+                android:id="@+id/tvAngleUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.angle, default=@string/deg}"
+                android:textSize="144sp"
+                app:layout_constraintStart_toEndOf="@+id/tvAcceleration"
+                app:layout_constraintTop_toTopOf="@+id/tvAngle" />
+
+        <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.ambientTemperature), default=20}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPressure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvPressure" />
+        <TextView
+                android:id="@+id/tvTemperatureUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.temperature, default=@string/degC}"
+                app:layout_constraintStart_toEndOf="@+id/tvTemperature"
+                app:layout_constraintTop_toTopOf="@+id/tvTemperature" />
+        <TextView
+                android:id="@+id/tvPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.pressure), default=1000}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHumidity"
+                app:layout_constraintEnd_toStartOf="@+id/bReset"
+                app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+                app:layout_constraintTop_toTopOf="@+id/tvHumidity"
+                app:layout_constraintVertical_bias="0.0" />
+        <TextView
+                android:id="@+id/tvPressureUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@{unit.pressure, default=@string/hPa}"
+                app:layout_constraintStart_toEndOf="@+id/tvPressure"
+                app:layout_constraintTop_toTopOf="@+id/tvPressure" />
+        <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.humidity), default=50}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvHumidityUnit"
+                app:layout_constraintTop_toTopOf="@+id/bReset" />
+        <TextView
+                android:id="@+id/tvHumidityUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/percent"
+                app:layout_constraintEnd_toStartOf="@+id/bReset"
+                app:layout_constraintTop_toTopOf="@+id/tvHumidity" />
+
+        <Button
+                android:text="@string/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bReset"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

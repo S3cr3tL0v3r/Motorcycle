@@ -1,5 +1,46 @@
 <resources>
+    <!-- Main Activity -->
     <string name="app_name">Motorcycle</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="tab_telemetry">Telemetry</string>
+    <string name="tab_zero_to_hundred">0 – 100</string>
+
+    <!-- Telemetry Fragment -->
+    <string name="reset">Reset</string>
+    <string name="lowest_altitude_icon">Lowest altitude icon</string>
+    <string name="highest_altitude_icon">Highest altitude icon</string>
+    <string name="km_h">km/h</string>
+    <string name="deg">°</string>
+    <string name="degC">°C</string>
+    <string name="hPa">hPa</string>
+    <string name="percent">%</string>
+
+    <!-- Zero to hundred Fragment -->
+    <string name="s">s</string>
+    <string name="stop">Stop</string>
+    <string name="ready">Ready</string>
+
+    <!-- Blank Fragment -->
+    <string name="error_fragment_not_found">Error, fragment not found.</string>
+
+    <!-- Preference Titles -->
+    <string name="units_header">Units</string>
+    <string name="processing_header">Processing</string>
+    <string name="look_and_feel_header">Look and feel</string>
+
+    <!-- Units Preferences -->
+    <string name="speed_title">Speed</string>
+    <string name="acceleration_title">Acceleration</string>
+    <string name="angle_title">Angle</string>
+    <string name="altitude_title">Altitude</string>
+    <string name="temperature_title">Temperature</string>
+    <string name="pressure_title">Pressure</string>
+
+    <!-- Processing Preferences -->
+    <string name="updates_title">Requesting location updates</string>
+    <string name="rate_title">Processing rate</string>
+
+    <!-- Look and feel Preferences -->
+    <string name="theme_title">Theme</string>
+    <string name="max_values">Max values:</string>
 </resources>

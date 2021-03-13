@@ -1,0 +1,89 @@
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+            app:title="@string/units_header">
+
+        <ListPreference
+                app:key="speed"
+                app:title="@string/speed_title"
+                app:entries="@array/speed_entries"
+                app:entryValues="@array/speed_values"
+                app:defaultValue="km/h"
+                app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:key="acceleration"
+                app:title="@string/acceleration_title"
+                app:entries="@array/acceleration_entries"
+                app:entryValues="@array/acceleration_values"
+                app:defaultValue="g"
+                app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:key="angle"
+                app:title="@string/angle_title"
+                app:entries="@array/angle_entries"
+                app:entryValues="@array/angle_values"
+                app:defaultValue="°"
+                app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:key="altitude"
+                app:title="@string/altitude_title"
+                app:entries="@array/altitude_entries"
+                app:entryValues="@array/altitude_values"
+                app:defaultValue="m"
+                app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:key="temperature"
+                app:title="@string/temperature_title"
+                app:entries="@array/temperature_entries"
+                app:entryValues="@array/temperature_values"
+                app:defaultValue="°C"
+                app:useSimpleSummaryProvider="true"/>
+
+        <ListPreference
+                app:key="pressure"
+                app:title="@string/pressure_title"
+                app:entries="@array/pressure_entries"
+                app:entryValues="@array/pressure_values"
+                app:defaultValue="hPa"
+                app:useSimpleSummaryProvider="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            app:title="@string/processing_header">
+
+        <CheckBoxPreference
+                android:key="updates"
+                android:title="@string/updates_title"
+                android:defaultValue="true"/>
+
+        <ListPreference
+                app:key="rate"
+                app:title="@string/rate_title"
+                app:entries="@array/rate_entries"
+                app:entryValues="@array/rate_values"
+                app:defaultValue="1"
+                app:useSimpleSummaryProvider="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            app:title="@string/look_and_feel_header">
+
+        <ListPreference
+                app:key="theme"
+                app:title="@string/theme_title"
+                app:entries="@array/theme_entries"
+                app:entryValues="@array/theme_values"
+                app:defaultValue="2"
+                app:useSimpleSummaryProvider="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

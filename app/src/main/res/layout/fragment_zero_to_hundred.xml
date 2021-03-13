@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="de.henrikkaltenbach.motorcycle.util.StringUtil" />
+        <variable name="telemetry" type="de.henrikkaltenbach.motorcycle.viewmodel.Telemetry"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            tools:context=".ui.main.ZeroToHundredFragment">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@{StringUtil.getOneDecimal(telemetry.timing), default=0.0}"
+                android:textSize="256sp"
+                android:id="@+id/tvTimingFullscreen"
+                android:maxLength="3"
+                android:textAlignment="center"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tvSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="3"
+                android:text="@{StringUtil.getZeroDecimal(telemetry.speed), default=100}"
+                android:textSize="144sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTiming"
+                app:layout_constraintTop_toTopOf="parent" />
+        <de.henrikkaltenbach.motorcycle.view.VerticalTextView
+                android:text="@string/km_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSpeedUnit"
+                android:gravity="bottom|end"
+                android:textSize="48sp"
+                android:fontFamily="sans-serif-thin"
+                app:layout_constraintTop_toTopOf="@+id/tvSpeed"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSpeed"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.getOneDecimal(telemetry.timing), default=0.0}"
+                android:textSize="144sp"
+                android:id="@+id/tvTiming"
+                android:maxLength="4"
+                app:layout_constraintEnd_toStartOf="@+id/tvTimingUnit"
+                app:layout_constraintTop_toBottomOf="@+id/tvSpeed"/>
+
+        <TextView
+                android:id="@+id/tvTimingUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:text="@string/s"
+                android:textSize="108sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvTiming"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvTiming"
+                app:layout_constraintVertical_bias="0.75" />
+
+        <Button
+                android:text="@string/ready"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:id="@+id/bReady"
+                android:textSize="72sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTiming"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

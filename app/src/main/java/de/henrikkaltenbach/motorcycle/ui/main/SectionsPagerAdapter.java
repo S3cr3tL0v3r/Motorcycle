@@ -1,11 +1,14 @@
 package de.henrikkaltenbach.motorcycle.ui.main;
 
 import android.content.Context;
+import android.hardware.SensorManager;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import de.henrikkaltenbach.motorcycle.R;
 
 /**
@@ -15,19 +18,32 @@ import de.henrikkaltenbach.motorcycle.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_telemetry, R.string.tab_zero_to_hundred, R.string.title_activity_settings};
     private final Context mContext;
+    private final FusedLocationProviderClient flpc;
+    private final SensorManager sm;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, FusedLocationProviderClient flpc, SensorManager sm) {
         super(fm);
         mContext = context;
+        this.flpc = flpc;
+        this.sm = sm;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        switch (position) {
+            case 0:
+                return TelemetryFragment.newInstance(flpc, sm);
+            case 1:
+                return ZeroToHundredFragment.newInstance(flpc, sm);
+            case 2:
+                return SettingsFragment.newInstance();
+            default:
+                return BlankFragment.newInstance();
+        }
     }
 
     @Nullable
@@ -38,7 +54,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        // Show 3 total pages.
+        return 3;
     }
 }
